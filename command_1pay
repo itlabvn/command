@@ -1,0 +1,636 @@
+#GIT
+git config --global user.email "itlabvn.net@gmail.com"
+git config --global user.name "Itlabvn"
+ducdt@ubuntu16:~/upload$ git clone git@github.com:itlabvn/upload.git
+git config --global user.name "Itlabvn"
+cp ~/download/command_1pay /home/ducdt/upload
+ducdt@ubuntu16:~/upload$ git status
+ducdt@ubuntu16:~/upload$ git commit -m 'command line for remember'
+ducdt@ubuntu16:~/upload$ git remote -v
+ducdt@ubuntu16:~/upload$ ssh-add ~/.ssh/id_rsa
+ducdt@ubuntu16:~/upload$ git push
+
+ ps -aux | grep "cat /var/wap/clickmultimedia/logs/access_log" | grep "sh" | awk '{ print $2 }' | xargs kill 9
+ ps -efw | grep "cat /var/wap/clickmultimedia/logs/access_log" | grep -v grep | awk '{print $2}' | xargs kill 9
+
+PoiMnb@321
+
+for i in {1..500}; do echo "I have a small favor to ask. More people are reading the nixCraft. Many of you block advertising which is your right, and advertising revenues are not sufficient to cover my operating costs. So you can see why I need to ask for your help. The nixCraft, takes a lot of my time and hard work to produce. If everyone who reads nixCraft, who likes it, contributes to support it with donations $i"; done
+
+root@20e5bbd3c8a8:/# for i in {1..20}; do echo "Number $i. I have a small favor to ask. More people are reading the nixCraft. Many of you block advertising which is your right, and advertising revenues are not sufficient to cover my operating costs. So you can see why I need to ask for your help. The nixCraft, takes a lot of my time and hard work to produce. If everyone who reads nixCraft, who likes it, contributes to support it with donations.I have a small favor to ask. More people are reading the nixCraft. Many of you block advertising which is your right, and advertising revenues are not sufficient to cover my operating costs. So you can see why I need to ask for your help. The nixCraft, takes a lot of my time and hard work to produce. If everyone who reads nixCraft, who likes it, contributes to support it with donations. Bash for loop examples to make command line tasks more efficient "; done
+
+curl -u influx:password -G 'http://localhost:8086/query?db=telegraf' --data-urlencode 'q=SELECT mean(usage_idle) FROM cpu'
+
+#GNS3
+sudo add-apt-repository ppa:gns3/ppa
+sudo apt-get update
+sudo apt-get install gns3-gui
+/usr/bin/gns3server
+127.0.0.1
+3080 TCP
+
+# /usr/bin/snmpwalk  -v 2c -c public localhost ipadd
+# /usr/bin/snmpwalk  -v 2c -c public localhost mem
+rdesktop 192.168.3.200 -r disk:share=/home/ducdt/share
+# cat snmpd.conf
+syslocation "My Location"
+syscontact  "Dan Massey"
+sysservices 76
+
+rocommunity public 
+rocommunity  mycommstring  ip address
+
+disk /
+
+210.245.26.66
+
+apt-get update && apt-get install -y procps
+# update-rc.d td-agent defaults
+# ls -l /etc/rc* | grep td-agent
+# update-rc.d -f td-agent remove
+root@1c67ccba8042:/usr/share/graylog# /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:NewRatio=1 -XX:MaxMetaspaceSize=256m -server -XX:+ResizeTLAB -XX:+UseConcMarkSweepGC -XX:+CMSConcurrentMTEnabled -XX:+CMSClassUnloadingEnabled -XX:+UseParNewGC -XX:-OmitStackTraceInFastThrow -jar -Dlog4j.configurationFile=/usr/share/graylog/data/config/log4j2.xml -Djava.library.path=/usr/share/graylog/lib/sigar/ -Dgraylog2.installation_source=docker /usr/share/graylog/graylog.jar server -f /usr/share/graylog/data/config/graylog.conf
+
+tls-server
+    key server-key.pem
+    cert server-crt.pem
+    ca ca-crt.pem
+    dh dh2048.pem
+    remote-cert-eku "TLS Web Client Authentication"
+
+
+influx -username 'influx' -password 'password'
+> show databases
+name: databases
+name
+----
+telegraf
+_internal
+
+> use telegraf
+Using database telegraf
+> show measurements
+name: measurements
+
+root@srvu16:/etc/kapacitor# kapacitor ?
+kapacitor define cpu_alert -type stream -tick cpu_alert.tick -dbrp telegraf.autogen
+kapacitor record batch -task batch_cpu_alert -past 20m
+kapacitor record stream -task cpu_alert -duration 60s
+kapacitor list tasks
+$ kapacitor show cpu_alert
+oot@srvu16:/etc/kapacitor# kapacitor disable mem_alert
+root@srvu16:/etc/kapacitor# kapacitor list tasks
+ID        Type      Status    Executing Databases and Retention Policies
+cpu_alert stream    disabled  false     ["telegraf"."autogen"]
+mem_alert stream    disabled  false     ["telegraf"."autogen"]
+
+
+# cat /etc/*-release
+dpkg-deb -i nxlog-ce_2.9.1716_ubuntu_1604_amd64.deb
+dpkg -i nxlog-ce_2.9.1716_ubuntu_1604_amd64.deb
+apt install -fy
+# vim /etc/nxlog/nxlog.conf 
+<Extension _gelf>
+    #Module      xm_syslog
+    Module      xm_gelf
+</Extension>
+
+<Input eventlog>
+    Module      im_msvistalog
+    Exec $Message = to_json();
+</Input>
+
+<Processor buffer>
+    Module      pm_buffer
+    # 1Gb disk buffer 1048576 kilo-bytes
+    MaxSize    1048576
+    Type    Disk
+    Directory  /tmp/buffer
+</Processor>
+
+<Output out>
+    Module      om_udp
+    Host        172.17.0.4
+    Port        12201
+    OutputType  GELF
+</Output>
+
+vim /etc/graylog/collector-sidecar/collector_sidecar.yml
+server_url: http://127.0.0.1:9000/api/
+update_interval: 10
+tls_skip_verify: false
+send_status: true
+list_log_files:
+node_id: graylog-collector-sidecar
+collector_id: file:/etc/graylog/collector-sidecar/collector-id
+cache_path: /var/cache/graylog/collector-sidecar
+log_path: /var/log/graylog/collector-sidecar
+log_rotation_time: 86400
+log_max_age: 604800
+tags:
+    - linux
+    - apache
+    - docker
+backends:
+    - name: nxlog
+      enabled: true
+      binary_path: /usr/bin/nxlog
+      configuration_path: /etc/nxlog/nxlog.conf
+
+I'm finding it hard to find documentation around this math when trying to figure out why my instances are consuming 2GB+ of RAM as opposed to just 256MB
+<source>
+  @type forward
+</source>
+
+
+<match docker.**>
+    @type gelf
+    host 172.17.0.4
+    port 12201
+    buffer_type file
+    buffer_path /var/log/td-agent/buffer
+    buffer_chunk_limit 2m
+    buffer_queue_limit 128
+</match>
+
+============== 
+
+ <source>
+    @type forward
+  </source>
+  <match **>
+    @type copy
+    <store>
+      @type "gelf"
+      host "172.17.0.4"
+      port 12201
+      protocol "tcp"
+      flush_interval 10s
+      request_timeout 120s
+      buffer_type "file"
+      buffer_path /tmp/buffer
+      utf-8 
+      buffer_chunk_limit 1m
+      buffer_queue_limit 2048
+      <buffer>
+        flush_mode interval
+        retry_type exponential_backoff
+        @type file
+        path /tmp/buffer
+        flush_interval 10s
+        chunk_limit_size 1m
+        queue_limit_length 2048
+      </buffer>
+    </store>
+    <store>
+      @type "stdout"
+    </store>
+  </match>
+
+
+
+FROM ubuntu:16.04
+MAINTAINER Bas Meijer <bas.meijer@me.com>
+LABEL running="docker run -d -p 8080:80 ubuntu:16.04"
+
+ADD ansible /tmp/ansible
+
+RUN apt update -y && \
+    apt install -y apache2 && \
+    apt-add-repository ppa:ansible/ansible && \
+    apt-get update && \
+    apt-get install ansible && \
+    cd /tmp/ansible && \
+    ansible-playbook playbook.yml
+
+EXPOSE 8080
+
+playbook.yml
+---
+- hosts: webservers
+  vars:
+    http_port: 80
+    max_clients: 200
+  tasks:
+    - name: install apache packages
+      apt: name=apache2 state=latest
+    - name: copy apache config file
+    - template:
+        src: /template/apache.j2
+        dest: /etc/apache2/apache.cfg
+  handlers:
+    - name: startup apache service
+    - service:
+        name: apache2
+        state: restart
+====
+vim hosts
+[webservers]
+web1 ansible_ssh_port=22
+web2 ansible_ssh_port=22
+====
+vim ansible.cfg
+[defaults]
+hostfile = hosts
+remote_tmp = /tmp
+===========
+ansible-playbook --syntax-check --list-tasks -i hosts playbook.yml
+->If there are no errors, you will get a list of tasks which the playbook wil execute:
+ansible-playbook --list-tasks playbook.yml
+->To run Ansible in Dry-Run Mode (a.k.a Check Mode):
+ansible-playbook playbook.yml --check
+$ tree -L 3
+
+
+config.vm.boot_timeout = 600
+vagrant up --provision --debug &> debug_log
+$ VAGRANT_LOG=info vagrant up
+or
+$ set VAGRANT_LOG=info
+$ vagrant up
+372  docker logs -f some-elasticsearch 
+  373  docker rm -vf some-elasticsearch
+  374  docker run --name some-elasticsearch -it elasticsearch:2 elasticsearch -Des.cluster.name="graylog"
+372  docker ps
+  373  docker logs some-mongo 
+  374  docker logs some-elasticsearch 
+  375  docker logs some-elasticsearch | view -
+  376  docker ps
+  377  docker inspect some-elasticsearch | view 
+  378  :qa
+  379  docker inspect some-elasticsearch | view -
+  380  docker logs some-elasticsearch | view -
+  381  ip a
+  382  docker exec -it some-elasticsearch ifconfig
+  383  docker exec -it some-elasticsearch cat /etc/hosts
+  384  docker logs some-elasticsearch | view -
+  385  docker inspect silly_wing | view -
+  386  docker restart some-elasticsearch 
+  387  docker logs -f some-elasticsearch 
+  388  docker exec silly_wing hostname
+  389  docker stop silly_wing 
+  390  docker run --link some-mongo:mongo --link some-elasticsearch:elasticsearch -p 12221:12221/udp -p 9000:9000 -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" -it graylog/graylog
+  391  docker ps -a
+  392  docker rm -vf laughing_wescoff
+  393  docker run --link some-mongo:mongo --link some-elasticsearch:elasticsearch -p 12201:12201/udp -p 9000:9000 -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api" -it graylog/graylog
+  394  history
+ 372  docker run --help
+  373  docker run --help | grep -i udp
+  374  docker run --help | view -
+
+http://docs.ansible.com/ansible/latest/modules_by_category.html
+ansible all -m ping
+ansible web1 -m apt -a "name=ntp state=installed" --sudo
+ansible web1 -m copy -a "src=/home/vagrant/files/ntp.conf dest=/etc/ntp.conf mode=644 owner=root group=root" --sudo
+ansible web1 -m service -a "name=ntp state=restarted"
+ansible all -m shell -a "uptime"
+ansible lb -m shell -a "/sbin/reboot"
+
+docker run --privileged  -ti -e "container=docker"  -v /sys/fs/cgroup:/sys/fs/cgroup  trinitronx/ansible-base:stable-centos7  /usr/sbin/init
+docker run --privileged  -ti -e "container=docker"  -v /sys/fs/cgroup:/sys/fs/cgroup  centos:latest  /usr/sbin/init
+
+I see this suggestion to run --privileged -e "container=docker" -v /sys/fs/cgroup:/sys/fs/cgroup then run /usr/sbin/init:
+
+docker run --privileged --name centos7 -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 -d centos /usr/sbin/init
+docker run --privileged -it --name your_container_name centos7 /sbin/init
+==========================
+  544  docker run --name mongo -d mongo:3
+  545  docker run --name elasticsearch     -e "http.host=0.0.0.0" -e "xpack.security.enabled=false"     -d docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+  546  docker run --link mongo --link elasticsearch     -p 9000:9000 -p 12201:12201 -p 514:514     -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api"     -d graylog/graylog:2.3.0-1
+  547  docker run --name elasticsearch     -e "http.host=0.0.0.0" -e "xpack.security.enabled=false"  -e ES_JAVA_OPTS="-Xms512m -Xmx512m"   -d docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+  548  docker rm -vf elasticsearch
+  549  docker run --name elasticsearch     -e "http.host=0.0.0.0" -e "xpack.security.enabled=false"  -e ES_JAVA_OPTS="-Xms512m -Xmx512m"   -d docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+  550  docker ps
+  551  docker logs elasticsearch -f
+  552  docker ps
+  553  docker rm -vf elasticsearch
+sudo sysctl -w vm.max_map_count=262144
+  554  docker run --name elasticsearch     -e "http.host=0.0.0.0" -e "xpack.security.enabled=false"  -e JAVA_OPTS="-Xms512m -Xmx512m"   -d docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+  555  docker logs elasticsearch -f
+  556  docker rm -vf elasticsearch
+  557  sudo sysctl -w vm.max_map_count=262144
+  558  docker run --name elasticsearch     -e "http.host=0.0.0.0" -e "xpack.security.enabled=false" -p 9200:9200 -p 9300:9300 -d docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+  559  docker ps -a
+  560  docker logs elasticsearch -f
+  561  docker ps
+  562  docker ps -a
+  563  docker rm -vf zen_kirch
+  564  docker run --link mongo --link elasticsearch   --name graylog  -p 9000:9000 -p 12201:12201/tcp -p 514:514  -p 22222:22222/udp -p 33333:33333/tcp -p 44444:44444/udp -p 24225:24225/tcp  -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api"     -d graylog/graylog:2.3.0-1
+  565  docker ps -a
+  566  docker logs angry_booth -f
+echo -n '{ "version": "1.1", "host": "example.org", "short_message": "A short message", "level": 5, "_some_info": "foo" }' | nc -w0 -u 172.17.0.4 12201
+echo -n '{ "version": "1.1", "host": "example.org", "short_message": "A short message", "level": 6, "_some_info": "foo" }' | nc -w 1 -u 172.17.0.4 12201
+#GELF TCP
+For sending GELF over TCP you need to delimit the message by a NUL byte.
+This is a little awkward in the shell, but otherwise the GELF processor does not know where the message ends, since GELF has no length specified.
+Try using:
+echo -ne '{"version": "1.1","host":"example.org","short_message":"A short message that helps you identify what is going on","full_message":"Backtrace here\\n\\nmore stuff","level":1,"_user_id":9001,"_some_info":"foo","_some_env_var":"bar"}\x00' > /tmp/gelf.bin
+cat /tmp/gelf.bin | netcat -w 1 localhost 514
+Please note the doubly escape newlines, since echo is resolving one level of escapes with -e. The \x00 at the end is the delimiter and not part of the message that gets indexed.
+A GELF library will do this for you, so this really only applies when sending this manually. I usually resort to either HTTP or UDP for convenience.
++ GELF via TCP requires messages to be terminated by a null character (\0). I agree that this is badly (or rather not at all) documented and we'll fix that.
+echo -e "{\"version\": \"1.1\",\"host\":\"example.org\",\"short_message\":\"This is short message\",\"level\":1}\0" | nc -w 1 172.17.0.4 514
+
+echo -e "{\"version\": \"1.1\",\"host\":\"example.org\",\"short_message\":\"This is short message\",\"level\":1}\0" | nc -w 1 127.0.0.1 24224
+
+echo -e '{"message":"TEST MESSAGE","host":"hd1app1","service":"test_service"}\0' | nc 10.0.1.138 42185
+curl -X POST -d 'json={"json":"message"}' http://localhost:8888/debug.test
+
+/usr/sbin/td-agent-gem install gelf
+https://raw.githubusercontent.com/emsearcy/fluent-plugin-gelf/master/lib/fluent/plugin/out_gelf.rb
+
+docker run --link mongo --link elasticsearch   --name graylog  -p 9000:9000 -p 12201:12201 -p 514:514  -p 24225:24225/tcp  -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api"     -d graylog/graylog:2.3.0-1
+
+ducdt@ubuntu16:~$ curl localhost:9200/graylog_0/_search?pretty 
+curl -XDELETE 'localhost:9200/graylog_0'
+curl 'localhost:9200/_cat/indices?v'
+
+# gem search -rd fluent-plugin
+# gem install fluent-plugin-gelf-hs
+# apt-get install ruby-all-dev
+td-agent --dry-run
+ps aux | grep ruby
+root@ubuntu16:/etc/td-agent/plugin# ps -aux | grep ruby
+td-agent 22705  0.0  0.3 128812 31176 ?        Sl   16:47   0:00 /opt/td-agent/embedded/bin/ruby /usr/sbin/td-agent --log /var/log/td-agent/td-agent.log --daemon /var/run/td-agent/td-agent.pid
+td-agent 22820  0.2  0.5 150436 45252 ?        Sl   16:50   0:00 /opt/td-agent/embedded/bin/ruby /usr/sbin/td-agent --log /var/log/td-agent/td-agent.log --daemon /var/run/td-agent/td-agent.pid
+root     22835  0.0  0.0  22820  1024 pts/21   S+   16:50   0:00 grep --color=auto ruby
+root@ubuntu16:/etc/td-agent/plugin# kill -9 22705 22820
+===================
+docker run -ti --name test --log-driver=fluentd --log-opt tag=td.docker.{{.Name}} ubuntu /bin/bash
+root@ubuntu16:/etc/td-agent/plugin# /usr/sbin/td-agent-gem env
+root@ubuntu16:/etc/td-agent# fluent-gem env
+# /usr/sbin/td-agent-gem search -rd fluent-plugin | grep gelf
+root@ubuntu16:/etc/td-agent/plugin# /usr/sbin/td-agent-gem install fluent-plugin-input-gelf
+/var/lib/gems/2.3.0/gems/fluentd-0.14.21/lib/fluent/plugin
+
+
+<source>
+  @type tcp
+  port 24224
+  bind 0.0.0.0
+</source>
+
+
+
+#<match **>
+#  type stdout
+#</match>
+
+<match **>
+  @type copy
+  <store>
+    @type gelf
+    host 172.17.0.4
+    port 22222
+    buffer_type file
+    buffer_path /var/log/td-agent/buffer
+    flush_interval 10s
+  </store>
+  <store>
+   type stdout
+  </store>
+</match>
+
+===============
+
+<match **>
+  @type copy
+  <store>
+    type gelf
+    host 172.17.0.4
+#    port 12201
+    port 24225
+    protocol tcp
+    buffer_type file
+    buffer_path /var/log/td-agent/buffer/td
+    flush_interval 10s
+  </store>
+</match>
+
+# Log Forwarding
+<match **>
+  type forward
+
+  <server>
+    host 172.17.0.4
+    port 24225
+  </server>
+
+
+  # use tcp for heartbeat
+  heartbeat_type tcp
+
+  # use longer flush_interval to reduce CPU usage.
+  # note that this is a trade-off against latency.
+  flush_interval 10s
+
+  # use multi-threading to send buffered data in parallel
+  num_threads 8
+
+  # expire DNS cache (required for cloud environment such as EC2)
+  expire_dns_cache 600
+
+  # use file buffer to buffer events on disks.
+  buffer_type file
+  buffer_path /var/log/td-agent/buffer/forward
+
+  # in case buffer becomes full, have local backup
+  <secondary>
+    type file
+    path /var/log/td-agent/secondary
+    compress gzip
+  </secondary>
+</match>
+
+=========================
+<source>
+  @type forward
+  port 24224
+  bind 0.0.0.0
+</source>
+
+#<match **>
+#  @type file
+#  path /var/log/td-agent/mylog
+#</match>
+
+<match **>
+  @type cope
+  <store>
+    type gelf
+    host 172.17.0.4
+    port 22222
+    buffer_type file
+    buffer_path /var/log/td-agent/buffer
+    flush_at_shutdown true
+    flush_interval 10s
+  </store>
+  <store>
+    type file
+    path /var/log/td-agent/myapp
+  </store>
+</match>
+
+
+===================
+<source>
+  @type forward
+  port 24224
+  bind 0.0.0.0
+</source>
+
+#<match **>
+#  @type file
+#  path /var/log/td-agent/mylog
+#</match>
+
+<match **>
+  @type copy
+  <store>
+    type gelf
+    host 172.17.0.5
+    port 12201
+    flush_interval 5s
+  </store>
+</match>
+
+==================
+<source>
+  type http
+  port 8888
+</source>
+
+<source>
+  type forward
+#  port 24224
+#  bind 0.0.0.0
+</source>
+
+<match **>
+  type file
+  path /var/log/td-agent/mylog
+</match>
+
+#Graylog
+<match **>
+  type forward
+  send_timeout 60s
+  recover_wait 10s
+  heartbeat_interval 1s
+  phi_threshold 8
+  hard_timeout 60s
+
+  <server>
+    name graylogserver
+    host 172.17.0.5
+    port 12201
+    #weight 60
+  </server>
+
+  <secondary>
+    type file
+    path /var/log/td-agent/forward-failed
+  </secondary>
+</match>
+
+
+# Include config files in the ./config.d directory
+#@include config.d/*.conf
+=================
+
+<match **>
+  type forward
+  <server>
+    host 172.17.0.5
+    port 12201
+  </server>
+  buffer_type file
+  buffer_path /var/log/td-agent/buffer/td.*.buffer
+  buffer_chunk_limit 128m
+  buffer_queue_limit 64
+  flush_interval 20s
+</match>
+
+
+
+# cat /etc/lsb-release 
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=16.04
+DISTRIB_CODENAME=xenial
+DISTRIB_DESCRIPTION="Ubuntu 16.04.3 LTS"
+
+
+# docker info | grep 'Logging Driver'
+WARNING: No swap limit support
+Logging Driver: json-file
+# docker run --log-driver=gelf --log-opt gelf-address=udp://172.17.0.4:12201 -p 80:80 -it --name container2 -d ubuntu:latest /bin/bash
+vim /etc/docker/daemon.json
+{
+  "log-driver": "gelf"
+}
+docker inspect -f '{{.HostConfig.LogConfig.Type}}' container2
+$ docker inspect mongo | grep LogPath
+$ tail -n2 LogPath
+docker run --log-driver=syslog --log-opt tag="nginx" --log-opt syslog-address=udp://[IP]:1514 nginx
+===============
+544  docker run --name mongo2 -d mongo:3
+docker run --name some-elasticsearch -d elasticsearch:2 elasticsearch -Des.cluster.name="graylog"
+676  docker run --name elasticsearch2     -e "http.host=0.0.0.0" -e "xpack.security.enabled=false"  -e ES_JAVA_OPTS="-Xms512m -Xmx512m"   -d docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+675  docker run --link mongo2 --link elasticsearch2     -p 9000:9000 -p 12201:12201 -p 514:514     -e GRAYLOG_WEB_ENDPOINT_URI="http://127.0.0.1:9000/api"     -d graylog/graylog:2.3.0-1
+
+docker run --log-driver=json-file --name "vidu" -d docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+docker run --log-driver=gelf --log-opt gelf-address=udp://172.17.0.4:514 ubuntu:latest echo hello world
+
+vim /etc/apt/sources.list 
+deb http://br.archive.ubuntu.com/ubuntu/ xenial main restricted
+deb-src http://br.archive.ubuntu.com/ubuntu/ xenial main restricted
+
+deb http://br.archive.ubuntu.com/ubuntu/ xenial-updates main restricted
+deb-src http://br.archive.ubuntu.com/ubuntu/ xenial-updates main restricted
+
+deb http://br.archive.ubuntu.com/ubuntu/ xenial universe
+deb-src http://br.archive.ubuntu.com/ubuntu/ xenial universe
+deb http://br.archive.ubuntu.com/ubuntu/ xenial-updates universe
+deb-src http://br.archive.ubuntu.com/ubuntu/ xenial-updates universe
+
+deb http://br.archive.ubuntu.com/ubuntu/ xenial multiverse
+deb-src http://br.archive.ubuntu.com/ubuntu/ xenial multiverse
+deb http://br.archive.ubuntu.com/ubuntu/ xenial-updates multiverse
+deb-src http://br.archive.ubuntu.com/ubuntu/ xenial-updates multiverse
+
+deb http://br.archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse
+deb-src http://br.archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse
+
+deb http://security.ubuntu.com/ubuntu xenial-security main restricted
+deb-src http://security.ubuntu.com/ubuntu xenial-security main restricted
+deb http://security.ubuntu.com/ubuntu xenial-security universe
+deb-src http://security.ubuntu.com/ubuntu xenial-security universe
+deb http://security.ubuntu.com/ubuntu xenial-security multiverse
+deb-src http://security.ubuntu.com/ubuntu xenial-security multiverse
+
+deb http://archive.canonical.com/ubuntu xenial partner
+deb-src http://archive.canonical.com/ubuntu xenial partner
+=======================
+$ sudo rm /etc/apt/sources.list.d/*
+$ sudo apt-get update && sudo apt-get dist-upgrade
+
+
+
+
+Lời đầu tiên xin chúc mừng Anh/Chị   đã trở  thành thành viên chính thức tại đại gia đình 1Pay. Thay mặt tập thể 1Pay xin chúc Anh/Chị nhiều sức khỏe và cùng với 1Pay đồng hành trên mọi nẻo đường. Sau đây em xin gửi lại Anh/Chị ‘Thông tin tài khoản Email & acount MOG_daily’. Anh/Chị đăng nhập và đổi lại pass theo thông tin dưới đây:
+
+1. Email:
+
+Username: ducdoan@truemoney.com.vn
+
+Password: 12345678
+
+Chữ ký: Anh/Chị làm theo mẫu phía dưới ở phần chữ ký.
+
+2. MOG_daily: là trang giao tiếp nội bộ của MOGer, mọi hoạt động về trao đổi công việc & thông tin update của Công ty sẽ post lên trang này:
+  ducdoan@truemoney.com.vn
+
+Login theo hướng dẫn trong mail công ty:  ducdoan@truemoney.com.vn
+
+3. Các quy định nội bộ: Anh/Chị login vào email:   ducdoan@truemoney.com.vn để xem tài liệu nhé.
+
+Mọi thắc mắc Anh/chị vui lòng liên hệ Ms. Ly – Chuyên viên Nhân Sự (Skype: Thaoly.hust)
