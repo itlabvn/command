@@ -1,0 +1,14 @@
+<source>
+  @type forward
+  port 33333
+</source>
+
+<match docker.**>
+  @type gelf
+  host 127.0.0.1
+  port 22222
+  buffer_type file
+  buffer_path /var/log/td-agent/buffer
+  flush_interval 1s
+</match>
+

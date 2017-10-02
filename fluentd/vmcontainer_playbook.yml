@@ -1,0 +1,7 @@
+---
+- hosts: vmcontainer
+  become: yes
+  become_user: root
+  roles:
+  - fluentd_agent
+    

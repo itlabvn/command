@@ -1,0 +1,24 @@
+---
+
+- name: "Add key for install td-agent"
+  apt_key:
+    url: "https://packages.treasuredata.com/GPG-KEY-td-agent"
+    state: present
+
+- name: "Add respository for install td-agent"
+  apt_repository:
+    repo: deb http://packages.treasuredata.com/2/ubuntu/xenial/ xenial contrib
+    state: present
+    update_cache: yes
+
+- name: "Installs fluentd packages"
+  apt: name=td-agent state=present update_cache=yes
+
+- name: "copy fluentd config file to vmcontianer"
+  copy: src=../files/td-agent.j2 dest=/etc/td-agent/td-agent.conf
+  notify:
+    - restart td-agent 
+
+- name: "ensure fluentd is running (and enable it at boot)"
+  service: name=td-agent state=started enabled=yes
+
