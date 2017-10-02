@@ -289,6 +289,9 @@ ansible web1 -m copy -a "src=/home/vagrant/files/ntp.conf dest=/etc/ntp.conf mod
 ansible web1 -m service -a "name=ntp state=restarted"
 ansible all -m shell -a "uptime"
 ansible lb -m shell -a "/sbin/reboot"
+ansible -i hosts 10.0.10.20 -m ping
+# ansible-playbook --flush-cache graylog_playbook.yml
+
 
 docker run --privileged  -ti -e "container=docker"  -v /sys/fs/cgroup:/sys/fs/cgroup  trinitronx/ansible-base:stable-centos7  /usr/sbin/init
 docker run --privileged  -ti -e "container=docker"  -v /sys/fs/cgroup:/sys/fs/cgroup  centos:latest  /usr/sbin/init
