@@ -20,7 +20,6 @@ ducdt@ubuntu16:~/upload$ git push
  ps -aux | grep "cat /var/wap/clickmultimedia/logs/access_log" | grep "sh" | awk '{ print $2 }' | xargs kill 9
  ps -efw | grep "cat /var/wap/clickmultimedia/logs/access_log" | grep -v grep | awk '{print $2}' | xargs kill 9
 
-PoiMnb@321
 
 for i in {1..500}; do echo "I have a small favor to ask. More people are reading the nixCraft. Many of you block advertising which is your right, and advertising revenues are not sufficient to cover my operating costs. So you can see why I need to ask for your help. The nixCraft, takes a lot of my time and hard work to produce. If everyone who reads nixCraft, who likes it, contributes to support it with donations $i"; done
 
