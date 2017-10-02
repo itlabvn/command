@@ -5,8 +5,13 @@ git config --global user.name "Itlabvn"
 ducdt@ubuntu16:~/upload$ git clone git@github.com:itlabvn/upload.git
 git config --global user.name "Itlabvn"
 cp ~/download/command_1pay /home/ducdt/upload
+
+root@ubuntu16:/home/ducdt/command# git config --global push.default matching
+root@ubuntu16:/home/ducdt/command# git config --global push.default simple
 ducdt@ubuntu16:~/upload$ git status
+ducdt@ubuntu16:~/command$ git add command_1pay 
 ducdt@ubuntu16:~/upload$ git commit -m 'command line for remember'
+ducdt@ubuntu16:~/upload$ git push
 ducdt@ubuntu16:~/upload$ git remote -v
 ducdt@ubuntu16:~/upload$ ssh-add ~/.ssh/id_rsa
 ducdt@ubuntu16:~/upload$ git push
