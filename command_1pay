@@ -1,5 +1,12 @@
-hello world
-hello
+<<<<<<< HEAD
+TMV && TTS
+=======
+change for upload
+
+sudo systemctl is-enabled td-agent.service
+
+
+>>>>>>> c44f92dfa8109e5271fdf7f926d4fbd9ae286ebf
 #GIT
 git config --global user.email "itlabvn.net@gmail.com"
 git config --global user.name "Itlabvn"
@@ -17,13 +24,27 @@ ducdt@ubuntu16:~/upload$ git remote -v
 ducdt@ubuntu16:~/upload$ ssh-add ~/.ssh/id_rsa
 ducdt@ubuntu16:~/upload$ git push
 
+https://logs.bizdev.truemoney.com.vn
+ducdt
+12345612
+
  ps -aux | grep "cat /var/wap/clickmultimedia/logs/access_log" | grep "sh" | awk '{ print $2 }' | xargs kill 9
  ps -efw | grep "cat /var/wap/clickmultimedia/logs/access_log" | grep -v grep | awk '{print $2}' | xargs kill 9
+
+for i in $(ls); do mv $i $i.j2; done
+for i in $(ls); do mv $i $(echo $i | awk -F '.' '{ print $1"."$2}'); done
 
 
 for i in {1..500}; do echo "I have a small favor to ask. More people are reading the nixCraft. Many of you block advertising which is your right, and advertising revenues are not sufficient to cover my operating costs. So you can see why I need to ask for your help. The nixCraft, takes a lot of my time and hard work to produce. If everyone who reads nixCraft, who likes it, contributes to support it with donations $i"; done
 
-root@20e5bbd3c8a8:/# for i in {1..20}; do echo "Number $i. I have a small favor to ask. More people are reading the nixCraft. Many of you block advertising which is your right, and advertising revenues are not sufficient to cover my operating costs. So you can see why I need to ask for your help. The nixCraft, takes a lot of my time and hard work to produce. If everyone who reads nixCraft, who likes it, contributes to support it with donations.I have a small favor to ask. More people are reading the nixCraft. Many of you block advertising which is your right, and advertising revenues are not sufficient to cover my operating costs. So you can see why I need to ask for your help. The nixCraft, takes a lot of my time and hard work to produce. If everyone who reads nixCraft, who likes it, contributes to support it with donations. Bash for loop examples to make command line tasks more efficient "; done
+root@20e5bbd3c8a8:/# for i in {1..100}; do echo "Number $i. I have a small favor to ask. More people are reading the nixCraft. Many of you block advertising which is your right, and advertising revenues are not sufficient to cover my operating costs. So you can see why I need to ask for your help. The nixCraft, takes a lot of my time and hard work to produce. If everyone who reads nixCraft, who likes it, contributes to support it with donations.I have a small favor to ask. More people are reading the nixCraft. Many of you block advertising which is your right, and advertising revenues are not sufficient to cover my operating costs. So you can see why I need to ask for your help. The nixCraft, takes a lot of my time and hard work to produce. If everyone who reads nixCraft, who likes it, contributes to support it with donations. Bash for loop examples to make command line tasks more efficient "; done
+
+docker run -ti --name test --log-driver=fluentd --log-opt tag=docker.{{.Name}} registry.truemoney.com.vn/tmvn/tts:v1.3.4-1-g6b00c35 /bin/bash
+docker run -it --name test7 --log-driver=gelf --log-opt gelf-address=udp://192.168.3.252:12201 ubuntu:latest /bin/bash
+
+${record["metadata"]["timestamp"]}
+
+AND NOT _exists_:@@timestamp 
 
 curl -u influx:password -G 'http://localhost:8086/query?db=telegraf' --data-urlencode 'q=SELECT mean(usage_idle) FROM cpu'
 
@@ -76,6 +97,7 @@ _internal
 Using database telegraf
 > show measurements
 name: measurements
+> SHOW USERS
 
 root@srvu16:/etc/kapacitor# kapacitor ?
 kapacitor define cpu_alert -type stream -tick cpu_alert.tick -dbrp telegraf.autogen
@@ -292,6 +314,23 @@ ansible all -m shell -a "uptime"
 ansible lb -m shell -a "/sbin/reboot"
 ansible -i hosts 10.0.10.20 -m ping
 # ansible-playbook --flush-cache graylog_playbook.yml
+ansible-playbook -i dev tmv.yml -tags=nginx -DvvvC
+# ansible-playbook  -i dev fluentd_deploy.yml --tag=server -DvvvC  --check
+- hosts: localhost
+  connection: local
+  vars:
+    run_block: true
+
+  tasks:
+  - block:
+    - name: say hello
+      command: echo hello
+      register: hello
+
+    - name: do something with results from say hello task
+      command: echo {{ item }}
+      with_items: "{{ hello.stdout_lines }}"
+    when: run_block
 
 
 docker run --privileged  -ti -e "container=docker"  -v /sys/fs/cgroup:/sys/fs/cgroup  trinitronx/ansible-base:stable-centos7  /usr/sbin/init
@@ -364,14 +403,176 @@ td-agent 22820  0.2  0.5 150436 45252 ?        Sl   16:50   0:00 /opt/td-agent/e
 root     22835  0.0  0.0  22820  1024 pts/21   S+   16:50   0:00 grep --color=auto ruby
 root@ubuntu16:/etc/td-agent/plugin# kill -9 22705 22820
 ===================
-docker run -ti --name test --log-driver=fluentd --log-opt tag=td.docker.{{.Name}} ubuntu /bin/bash
+
+docker run -ti --name test --log-driver=fluentd --log-opt tag=docker.{{.Name}} registry.truemoney.com.vn/tmvn/tts /bin/bash
+
 root@ubuntu16:/etc/td-agent/plugin# /usr/sbin/td-agent-gem env
 root@ubuntu16:/etc/td-agent# fluent-gem env
 # /usr/sbin/td-agent-gem search -rd fluent-plugin | grep gelf
 root@ubuntu16:/etc/td-agent/plugin# /usr/sbin/td-agent-gem install fluent-plugin-input-gelf
 /var/lib/gems/2.3.0/gems/fluentd-0.14.21/lib/fluent/plugin
 
+docker run -ti --name test --log-driver=fluentd --log-opt tag=docker ubuntu /bin/bash
+# docker run -td --name test --log-driver=fluentd --log-opt 	 ubuntu
 
+ansible-playbook -i dev -e version=v1.3.4-1-g6b00c35 tts-deploy.yml -Dvvv
+
+# ansible-playbook -i dev tts-deploy.yml -e tts.version=v1.3.4-1-g6b00c35 -Dvvv
+# ansible-playbook -i dev tmv-deploy.yml -e tts.version=v1.3.2-1-gc852a17 -Dvvv
+treo: enter, enter ~. =>(thoat)
+sudo -iu deploy
+docker stats $(docker ps --format={{.Names}})
+
+for i in {1..10}; do echo "{\"a\": $i }"; done >> /home/some.log
+
+-rw-rw---- 1 mysql mysql  14K Th11 15 06:48 /data/mysql/xmp/tbl_msgtransact_ok.frm
+-rw-rw---- 1 mysql mysql  12G Th11 15 13:10 /data/mysql/xmp/tbl_msgtransact_ok.ibd
+
+ThClick@567
+
+
+docker run -ti --name test --log-driver=fluentd --log-opt fluentd-buffer-limit=10KB  --log-opt tag=docker.{{.Name}} ubuntu /bin/bash
+
+
+
+2 Create a one-week retention policy
+CREATE RETENTION POLICY "one_week" ON "telegraf" DURATION 1w REPLICATION 1 DEFAULT
+- CREATE RETENTION POLICY "one_hour" ON "telegraf" DURATION 1h REPLICATION 1 DEFAULT
+SHOW RETENTION POLICIES ON "telegraf"
+3 Create a four-week retention policy
+CREATE RETENTION POLICY "four_week" ON "telegraf" DURATION 4w REPLICATION 1
+4. Create a Continuous Query (CQ) 
+- Fully-qualify a measurement: "<database>"."<retention_policy>"."<measurement>"
+CREATE CONTINUOUS QUERY "ave_usage" ON "telegraf" 
+BEGIN 
+	SELECT MEAN("usage_idel")
+	INTO "telegraf"."four_week"."ave_cpu"
+	FROM "telegraf"."one_week"."cpu"
+	WHERE "cpu" = "cpu-total" GROUP BY time(5m)
+END
+5.Test (Wait about 5 minues)
+USE "telegraf"
+SHOW MEASUREMENT
+SELECT "usage_idle" FROM "telegraf"."one_week"."cpu" LIMIT 3
+SELECT "mean" FROM "telegraf"."four_week"."ave_cpu" LIMIT 3
+6. Issue-Working with historical data
+>SELECT MAX("water_level") INTO "maximums" FROM "h2o_feet" 
+  WHERE time >= '2015-08-18T00:00:00Z' AND time <= '2015-08-18T00:18:00Z' GROUP BY time(12m)
+>SELECT * FROM "maximums"; (2 rows return)
+>SELECT "water_level","location" FROM "h2o_feet" LIMIT 8;
+=============
+>precision rfc3339  #convert time reable
+>SELECT * FROM "french_bulldogs"> 
+---------------
+> show databases
+> show retention policies on telegraf
+name    duration shardGroupDuration replicaN default
+----    -------- ------------------ -------- -------
+autogen 720h0m0s 168h0m0s           1        true
+forever 0s       168h0m0s           1        false
+> drop retention policy forever on telegraf
+> CREATE RETENTION POLICY "one_hours" ON "telegraf" DURATION 1h REPLICATION 1 DEFAULT
+> CREATE RETENTION POLICY "a_year" ON "telegraf" DURATION 52w  REPLICATION 1;
+> CREATE CONTINUOUS QUERY "a_year" ON "telegraf" BEGIN SELECT mean(value) AS value INTO telegraf."a_year".:MEASUREMENT FROM /.*/ GROUP BY time(5m), * END
+> SHOW CONTINUOUS QUERIES
+> DROP CONTINUOUS QUERY a_year ON telegraf;
+> select "usage_idle" from "cpu" group by * order by desc limit 1
+
+> create database downsampled_telegraf;
+> CREATE RETENTION POLICY "a_year" ON "telegraf" DURATION 52w  REPLICATION 1;
+
+
+timeout 5 md5sum /dev/zero
+
+> create database downsampled_telegraf;
+> CREATE RETENTION POLICY "four_week" ON "downsampled_telegraf" DURATION 4w  REPLICATION 1;
+ALTER RETENTION POLICY "autogen" ON "downsampled_telegraf" DURATION 52w REPLICATION 1 SHARD DURATION 10w DEFAULT
+> SELECT mean(*) INTO "downsampled_telegraf"."four_week".:MEASUREMENT FROM telegraf."autogen"./.*/ WHERE time >= '2015-08-18T00:00:00Z' AND time <= '2015-08-18T00:18:00Z' GROUP BY time(5m)
+> SELECT mean(*) INTO "downsampled_telegraf"."four_week".:MEASUREMENT FROM telegraf."autogen"./.*/ WHERE time <= now() GROUP BY time(5m) 
+> ALTER RETENTION POLICY "autogen" ON "telegraf" DURATION 2h REPLICATION 1 SHARD DURATION 1h DEFAULT
+> CREATE CONTINUOUS QUERY "cq_four_week" ON "telegraf" BEGIN SELECT mean(*) INTO "downsampled_telegraf"."four_week".:MEASUREMENT FROM telegraf."autogen"./.*/ GROUP BY time(5m),* END
+
+SELECT mean(*) INTO "downsampled_telegraf"."autogen".:MEASUREMENT FROM telegraf."autogen"./.*/ WHERE time <= now() GROUP BY time(5m),host
+SELECT mean(*) INTO "downsampled_telegraf"."autogen".:MEASUREMENT FROM telegraf."autogen"./.*/ WHERE time <= now() GROUP BY location,time(5m) fill(none)
+> CREATE RETENTION POLICY "one_hour" ON "telegraf" DURATION 1h REPLICATION 1 DEFAULT
+
+> influx -precision rfc3339
+> CREATE DATABASE downsampled_telegraf;
+> CREATE DATABASE downsampled2_telegraf;
+> ALTER RETENTION POLICY "autogen" ON "downsampled_telegraf" DURATION 3h REPLICATION 1 SHARD DURATION 1h DEFAULT
+> SELECT mean(*) INTO "downsampled_telegraf"."autogen".:MEASUREMENT FROM telegraf."autogen"./.*/ WHERE time <= now() GROUP BY time(5m),*
+> SELECT mean(*) INTO "downsampled2_telegraf"."autogen".:MEASUREMENT FROM telegraf."autogen"./.*/ WHERE time <= now() GROUP BY time(10m),*
+> ALTER RETENTION POLICY "autogen" ON "telegraf" DURATION 1h REPLICATION 1 SHARD DURATION 1h DEFAULT
+> CREATE CONTINUOUS QUERY "cq_5m" ON "telegraf" BEGIN SELECT mean(*) INTO "downsampled_telegraf"."autogen".:MEASUREMENT FROM telegraf."autogen"./.*/ GROUP BY time(5m),* END
+> CREATE CONTINUOUS QUERY "cq_10m" ON "telegraf" BEGIN SELECT mean(*) INTO "downsampled2_telegraf"."autogen".:MEASUREMENT FROM telegraf."autogen"./.*/ GROUP BY time(10m),* END
+
+> SELECT * FROM downsampled_telegraf."autogen".cpu ORDER BY time DESC LIMIT 20;
+> SELECT * FROM telegraf."autogen".cpu ORDER BY time DESC LIMIT 20;
+> SHOW CONTINUOUS QUERIES
+> SHOW RETENTION POLICIES ON "telegraf"
+> DROP CONTINUOUS QUERY a_year ON telegraf;
+> ALTER RETENTION POLICY "autogen" ON "telegraf" DURATION 2h REPLICATION 1 SHARD DURATION 1h DEFAULT
+
+alter retention policy "autogen" on "telegraf" duration INF replication 1;
+alter retention policy "autogen" on "telegraf" duration INF replication 1 shard duration 7d;
+
+>precision rfc3339  #convert time reable
+$ influx -precision rfc3339
+> show shards
+> SHOW MEASUREMENTS where host='serverA'
+> SHOW TAG KEYS 
+> SHOW TAG KEYS from CPU
+> select * from telegraf."autogen".cpu order by time desc limit 5;
+> select * from downsampled_telegraf."four_week".cpu order by time desc limit 5;
+> select * from telegraf."one_hour".cpu;
+> select * from telegraf.autogen.system where ip='172.31.1.17' order by time desc limit 5;
+
+SELECT mean("bytes_sent") AS "bytes_send" FROM "net" WHERE ("host" = 'srvu16') AND $timeFilter GROUP BY time($__interval) fill(null)
+SELECT mean("bytes_sent") AS "bytes_send" FROM "four_week"."cpu" WHERE ("host" = 'srvu16') AND $timeFilter GROUP BY location,time(5m) fill(none)
+SELECT mean(*) INTO "downsampled_telegraf"."autogen".:MEASUREMENT FROM telegraf."autogen"./.*/ WHERE time <= now() GROUP BY time(5m),*
+
+
+SHOW MEASUREMENTS where host='ip-172-31-1-17'
+precision rfc3339
+select * from telegraf.autogen.system where ip='172.31.1.17' order by time desc limit 5;
+select cpu, usage_idle from telegraf.autogen.cpu where ip='172.31.1.17' and cpu='cpu-total' order by time desc limit 5;
+select result_type from telegraf.autogen.net_response  order by time desc limit 5;
+select * from telegraf.autogen.net_response  order by time desc limit 1;  //check_tcp.tick
+kapacitor define check_tcp -type stream -tick /etc/kapacitor/ticks/stream/check_tcp.tick -dbrp telegraf.autogen
+# kapacitor record stream -task check_tcp -duration 1m
+# kapacitor list recordings $rid
+
+influx -host '172.31.3.11' -port '8086' -username 'telegraf' -password 'telegraf'
+kapacitor replay-live batch -task real_pred_task -rec-time -past 200d
+
+push.push_buffer reach
+
+ALTER TABLE push_buffer MODIFY id INT;
+mysqldump -u <db_username> -h <db_host> -p db_name table_name > table_name.sql
+mysqldump -usuwat -p5bOO74bN1d -h 10.20.0.3 push push_buffer > push_push_buffer.sql
+
+vn-wallet thì hỏi phuongnh@truemoney.com.vn và hoangnn@truemoney.com.vn
+anv2 thì có anhtt@truemoney.com.vn
+bankgw + billpay thì binhhc@truemoney.com.vn
+anv1 thì em cũng ko rõ là ai, a có thể hỏi anhtv@truemoney.com.vn
+
+anhtv@truemoney.com.vn
+
+
+cpu
+disk
+diskio
+kernel
+kernel_vmstat
+mem
+net
+netstat
+processes
+swap
+system
+
+mysql -usuwat -p5bOO74bN1d -h 10.20.0.3
+issue is : table push.push_buffer reach max id
 <source>
   @type tcp
   port 24224
@@ -622,6 +823,157 @@ deb-src http://archive.canonical.com/ubuntu xenial partner
 $ sudo rm /etc/apt/sources.list.d/*
 $ sudo apt-get update && sudo apt-get dist-upgrade
 
+sed -i "s/$(sed -ne '/transapi/,/^$/p' dev | grep version | awk '{ print $2 }')/123456/g" dev
+
+# git add -p
+# git status
+# git diff
+# git commit -m "Request second time for deploy fluentd playbook"
+# git push -u
+# git checkout ducd  //comebackup branch ducdt
+
+sudo docker run -ti --name test --log-driver=fluentd --log-opt tag=docker fc9cb27a571b /bin/bash
+
+docker run -it --name test --log-driver gelf –-log-opt gelf-address=udp://192.168.3.252:12201 ubuntu /bin/bash
+docker run --log-driver gelf –-log-opt gelf-address=udp://192.168.3.252:12201 ubuntu echo hello world
+docker run -ti --name  --log-driver gelf –-log-opt gelf-address=udp://192.168.3.252:12201 ubuntu:latest /bin/bash
+
+curl 0:80
+
+root@ubuntu16:~/1PAY/tmvn_ansible# git status
+root@ubuntu16:~/1PAY/tmvn_ansible# git branch
+* ducdt
+  master
+root@ubuntu16:~/1PAY/tmvn_ansible# git checkout -b ducdt #create ducdt branch
+git fetch
+git merge FETCH_HEAD
+git branch
+
+2039  git add -p
+      git add . (them tat ca thay doi)
+ 2040  git status
+git add files/kapacitor/tasks.sh
+
+ 2041  git commit -m "Update fluentd_deploy.yml playbook and config"
+ 2042  git push -u# # 
+ 2043  git checkout master
+ 2044  git fetch
+ 2045  git merge FETCH_HEAD
+ 2046  git checkout -b deploy_fluent_dev
+#add more to ready not commit
+git add -p
+git add templates/fluentd/gelf-3.0.0.gem
+git commit --amend
+git push -fu
+
+
+for i in $(find /etc/kapacitor/ticks -name \*.tick -print); do echo //hello >> $i; done
+
+source:ip\-172\-31\-1\-237 AND container_name:\/tts
+ansible-playbook -i dev tts-deploy.yml -e "tts.version=v1.3.4-1-g6b00c35" -DvvvC
+# ansible-playbook -i dev --extra-vars "version=v1.3.4-1-g6b00c35" tts-deploy.yml -DvvvC
+
+#ticks_changed: "{{ batch_item.results | selectattr('changed') | map(attribute='item') | list }} + {{ stream_item.results | selectattr('changed') | map(attribute='item') | list }} + {{ temp_item.results | selectattr('changed') | map(attribute='item') | list }}"
+
+[[inputs.ping]]
+   urls = ["172.31.0.54", "172.31.0.55", "172.31.1.13", "172.31.1.14", "172.31.1.15", "172.31.1.237", "172.31.1.41", "172.31.2.4", "172.31.2.5", "172.31.3.11", ]
+   count = 10
+
+$ influx -host '172.31.3.11' -port '8086' -username 'telegraf' -password 'telegraf'
+#kapacitor define port_response -type stream -tick port_response.tick -dbrp telegraf.autogen
+# kapacitor list recordings $rid
+
+Open "dconf-editor"
+
+"dconf editor" is available for installation in the ubuntu software center
+
+navigate to org > gnome > gnome-screenshot and change the default-file-type png to jpg.
+
+telegraf --config /etc/telegraf/telegraf.conf -test
+etrieved_value / (100 (seconds) * 60 (minutes) * 60 (hours) * 24 (days))          
+
+root@2e9809a14469:/opt/true-money/www/truetts# cat /etc/supervisor/supervisord.conf
+; supervisor config file
+
+[unix_http_server]
+file=/var/run/supervisor.sock   ; (the path to the socket file)
+chmod=0700                       ; sockef file mode (default 0700)
+
+[supervisord]
+logfile=/var/log/supervisor/supervisord.log ; (main log file;default $CWD/supervisord.log)
+pidfile=/var/run/supervisord.pid ; (supervisord pidfile;default supervisord.pid)
+childlogdir=/var/log/supervisor            ; ('AUTO' child log dir, default $TEMP)
+
+; the below section must remain in the config file for RPC
+; (supervisorctl/web interface) to work, additional interfaces may be
+; added by defining them in separate rpcinterface: sections
+[rpcinterface:supervisor]
+supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
+
+[supervisorctl]
+serverurl=unix:///var/run/supervisor.sock ; use a unix:// URL  for a unix socket
+
+; The [include] section can just contain the "files" setting.  This
+; setting can list multiple files (separated by whitespace or
+; newlines).  It can also contain wildcards.  The filenames are
+; interpreted as relative to this file.  Included files *cannot*
+; include files themselves.
+
+[include]
+files = /etc/supervisor/conf.d/*.conf
+
+=================
+root@2e9809a14469:/etc/supervisor/conf.d# cat programs.conf 
+[program:nginx]
+command=nginx -g 'daemon off;'
+stdout_logfile=/dev/stdout
+stdout_logfile_maxbytes=0
+stderr_logfile=/dev/stderr
+stderr_logfile_maxbytes=0
+
+[program:php-fpm]
+command=php-fpm
+stdout_logfile=/dev/stdout
+stdout_logfile_maxbytes=0
+stderr_logfile=/dev/stderr
+stderr_logfile_maxbytes=0
+
+=======================
+root@ip-172-31-2-5:/home/ubuntu# curl 'http://172.31.2.5:9200/_cat/indices/graylog*?v'
+health status index      pri rep docs.count docs.deleted store.size pri.store.size 
+green  open   graylog_14   4   0      52360            0     36.2mb         36.2mb 
+green  open   graylog_25   4   0     134782            0    115.6mb        115.6mb 
+green  open   graylog_13   4   0      86803            0     91.5mb         91.5mb 
+green  open   graylog_24   4   0       8540            0      4.2mb          4.2mb 
+green  open   graylog_16   4   0      48304            0     36.7mb         36.7mb 
+green  open   graylog_27   4   0      83679            0     89.3mb         89.3mb 
+green  open   graylog_15   4   0      75826            0     46.4mb         46.4mb 
+green  open   graylog_26   4   0      82467            0     78.4mb         78.4mb 
+green  open   graylog_18   4   0      63516            0       49mb           49mb 
+green  open   graylog_29   4   0       2391            0      3.3mb          3.3mb 
+green  open   graylog_17   4   0      31106            0     16.7mb         16.7mb 
+green  open   graylog_28   4   0     152308            0    166.4mb        166.4mb 
+green  open   graylog_19   4   0      53479            0     39.6mb         39.6mb 
+green  open   graylog_10   4   0       9950            0     10.6mb         10.6mb 
+green  open   graylog_21   4   0      52221            0     51.6mb         51.6mb 
+green  open   graylog_20   4   0      65989            0     45.4mb         45.4mb 
+green  open   graylog_12   4   0      66880            0     62.3mb         62.3mb 
+green  open   graylog_23   4   0       8540            0      4.2mb          4.2mb 
+green  open   graylog_11   4   0      55403            0       33mb           33mb 
+green  open   graylog_22   4   0      61365            0     53.8mb         53.8mb 
+
+
+
+
+
+
+
+wallet-proxy
+
+logs.dev.truemoney.com.vn
+ducdt
+54678912 (edited)
+
 
 
 
@@ -643,3 +995,233 @@ Login theo hướng dẫn trong mail công ty:  ducdoan@truemoney.com.vn
 3. Các quy định nội bộ: Anh/Chị login vào email:   ducdoan@truemoney.com.vn để xem tài liệu nhé.
 
 Mọi thắc mắc Anh/chị vui lòng liên hệ Ms. Ly – Chuyên viên Nhân Sự (Skype: Thaoly.hust)
+<source>
+  @type forward
+  port 24224
+</source>
+
+<source>
+  @type forward
+  port 9012
+</source>
+
+<filter docker.**>
+  @type record_transformer
+  enable_ruby
+  <record>
+     container_name ${record["container_name"].gsub('/','')}
+     host ${record["source"]}
+     timestamps ${record["timestamps"]}
+     #formatted_time ${time.strftime('%Y-%m-%dT%H:%M:%S%4N')}
+
+#     timestamp ${record["times"].strftime('%Y-%m-%d %H:%M:%S.%N')}
+#     format_time ${Time.now.strftime('%Y-%m-%dT%H:%M:%S.%4N')}
+     #format_time ${Time.now.strftime('%Y-%m-%dT%H:%M:%S.%N%z')}
+#     f_time ${Time.now.iso8601(3)}
+    # formatted_time ${time.strftime('%Y-%m-%dT%H:%M:%S%z')}
+     #timestamp ${ require 'time'; Time.now.utc.iso8601(3) }
+     #time_nano ${t = Time.now; ((t.to_i * 1000000000) + t.nsec).to_s.rsrip}
+ #    time_key @timestamp
+ #    time_format "%Y-%m-%dT%H:%M:%S.%L%Z"
+  </record>
+</filter>
+
+<match docker.**>
+  @type gelf
+  host 127.0.0.1
+  port 12201
+  flush_interval 1s
+  use_record_host true
+</match>
+
+
+172.32.0.11
+172.32.0.12
+172.32.1.11
+172.32.1.12
+172.32.1.14
+172.32.1.15
+172.32.1.16
+172.32.1.17
+172.32.1.18
+172.32.1.19
+
+2017-10-31 14:22:29 +0700 [warn]: #0 fluent/root_agent.rb:299:emit_error_event: dump an error event: error_class=RuntimeError error="failed to expand `t = Time.now; ((t.to_i * 1000000000) + t.nsec).to_s.strftime(\"%Y-%m-%dT%H:%M:%S.%L\")` : error = undefined method `strftime' for \"1509434549316059243\":String\nDid you mean?  strip" tag="docker" time=1509434546 record={"source"=>"ubuntu16", "log"=>"nice 18\r", "container_id"=>"5c09e0f66afbf50a64166e18ba4552590ddfbadb5075de0a0da88e586c38827a", "container_name"=>"/test"}
+
+docker run --log-driver gelf –-log-opt gelf-address=udp://192.168.3.252:12201 alpine echo hello world
+
+
+<source>
+  @type forward
+  port 9012
+</source>
+
+<source>
+  @type forward
+  port 24224
+</source>
+
+<filter docker.**>
+  @type record_transformer
+  enable_ruby
+  <record>
+     container_name ${record["container_name"].gsub('/','')}
+     host ${record["source"]}
+  </record>
+</filter>
+
+<match docker.**>
+  @type gelf
+  host 127.0.0.1
+  port 9010
+  buffer_type file
+  buffer_path /var/log/td-agent/buffer/docker.*.buffer
+  flush_interval 1s
+  use_record_host true
+</match>
+====================================
+<source>
+  @type forward
+  port 24224
+</source>
+
+<filter docker.**>
+  @type record_transformer
+  enable_ruby
+  <record>
+     source "#{Socket.gethostname}"
+  </record>
+</filter>
+
+<match docker.**>
+  @type forward
+  buffer_type file
+  buffer_path /var/log/td-agent/buffer/docker.*.buffer
+  flush_interval 3s
+  <server>
+    host 172.31.1.237
+    port 9012
+  </server>
+</match>
+
+172.32.1.11
+172.32.1.12
+172.32.1.14
+172.32.1.15
+172.32.1.16
+172.32.1.17
+172.32.1.18
+172.32.1.19
+
+[httpd] 127.0.0.1 - - [08/Nov/2017:04:16:38 +0000] "GET /kapacitor/v1/tasks?dot-view=attributes&fields=link&limit=100&offset=0&pattern=load&replay-id=&script-format=formatted HTTP/1.1" 200 43 "-" "KapacitorClient" 9dd1fa9f-c43b-11e7-83de-000000000000 443
+[httpd] 127.0.0.1 - - [08/Nov/2017:04:16:38 +0000] "GET /kapacitor/v1/tasks/load?dot-view=attributes&replay-id=&script-format=formatted HTTP/1.1" 404 57 "-" "KapacitorClient" 9dd274c0-c43b-11e7-83df-000000000000 341
+[httpd] 127.0.0.1 - - [08/Nov/2017:04:16:38 +0000] "POST /kapacitor/v1/tasks HTTP/1.1" 200 1016 "-" "KapacitorClient" 9dd28f4d-c43b-11e7-83e0-000000000000 37204
+[httpd] 127.0.0.1 - - [08/Nov/2017:04:16:38 +0000] "GET /kapacitor/v1/tasks?dot-view=attributes&fields=link&limit=100&offset=0&pattern=load&replay-id=&script-format=formatted HTTP/1.1" 200 119 "-" "KapacitorClient" 9dd8d11e-c43b-11e7-83e1-000000000000 536
+[httpd] 127.0.0.1 - - [08/Nov/2017:04:16:38 +0000] "PATCH /kapacitor/v1/tasks/load HTTP/1.1" 200 1024 "-" "KapacitorClient" 9dd8f40b-c43b-11e7-83e2-000000000000 25279
+[httpd] 127.0.0.1 - - [08/Nov/2017:04:16:38 +0000] "GET /kapacitor/v1/tasks?dot-view=attributes&fields=link&limit=100&offset=0&pattern=load&replay-id=&script-format=formatted HTTP/1.1" 200 119 "-" "KapacitorClient" 9ddce37b-c43b-11e7-83e3-000000000000 633
+[task_master:main] 2017/11/08 04:16:38 D! Starting task: load
+[task_master:main] 2017/11/08 04:16:38 I! Started task: load
+[task_master:main] 2017/11/08 04:16:38 D! digraph load {
+query1 -> state_count2;
+state_count2 -> state_count3;
+state_count3 -> state_count4;
+state_count4 -> alert5;
+}
+[edge:load|query1->state_count2] 2017/11/08 04:16:38 D! closing c: 0 e: 0
+[edge:load|batch->batch0] 2017/11/08 04:16:38 I! aborting c: 0 e: 0
+[load:query1] 2017/11/08 04:16:38 E! batch run aborted
+[edge:load|state_count2->state_count3] 2017/11/08 04:16:38 D! closing c: 0 e: 0
+[edge:load|state_count3->state_count4] 2017/11/08 04:16:38 D! closing c: 0 e: 0
+[edge:load|state_count4->alert5] 2017/11/08 04:16:38 D! closing c: 0 e: 0
+
+kapacitor delete tasks load
+  634  kapacitor list tasks
+  635  kapacitor define load -type batch -tick /etc/kapacitor/ticks/batch/load.tick  -dbrp telegraf.autogen
+  636  kapacitor list tasks
+  637  kapacitor enable load
+  638  kapacitor list tasks
+  639  kapacitor disabled load
+enabling task diskio: batch query is not allowed to request data from "telegraf"."autogen"
+
+[httpd] 127.0.0.1 - - [06/Nov/2017:03:49:28 +0000] "GET /kapacitor/v1/tasks?dot-view=attributes&fields=link&limit=100&offset=0&pattern=load&replay-id=&script-format=formatted HTTP/1.1" 200 119 "-" "KapacitorClient" 7d289288-c2a5-11e7-978a-000000000000 666
+[httpd] 127.0.0.1 - - [06/Nov/2017:03:49:28 +0000] "DELETE /kapacitor/v1/tasks/load HTTP/1.1" 204 0 "-" "KapacitorClient" 7d28b91e-c2a5-11e7-978b-000000000000 3384
+
+[httpd] 127.0.0.1 - - [06/Nov/2017:03:51:18 +0000] "GET /kapacitor/v1/tasks/load?dot-view=attributes&replay-id=&script-format=formatted HTTP/1.1" 404 57 "-" "KapacitorClient" bf0c15a5-c2a5-11e7-9ae6-000000000000 473
+[httpd] 127.0.0.1 - - [06/Nov/2017:03:51:18 +0000] "POST /kapacitor/v1/tasks HTTP/1.1" 200 1279 "-" "KapacitorClient" bf0c3c49-c2a5-11e7-9ae7-000000000000 20389
+
+[httpd] 127.0.0.1 - - [06/Nov/2017:03:51:53 +0000] "GET /kapacitor/v1/tasks?dot-view=attributes&fields=link&limit=100&offset=0&pattern=load&replay-id=&script-format=formatted HTTP/1.1" 200 119 "-" "KapacitorClient" d3c2ad78-c2a5-11e7-9c1a-000000000000 679
+[task_master:main] 2017/11/06 03:51:53 I! Started task: load
+[httpd] 127.0.0.1 - - [06/Nov/2017:03:51:53 +0000] "PATCH /kapacitor/v1/tasks/load HTTP/1.1" 200 1544 "-" "KapacitorClient" d3c2dc73-c2a5-11e7-9c1b-000000000000 31315
+
+
+[task_master:main] 2017/11/06 06:36:27 I! Started task: diskio
+[edge:diskio|batch->batch0] 2017/11/06 06:36:27 I! aborting c: 0 e: 0
+[diskio:query1] 2017/11/06 06:36:27 E! batch run aborted
+
+
+
+
+[httpd] 127.0.0.1 - - [06/Nov/2017:03:32:52 +0000] "GET /kapacitor/v1/tasks?dot-view=attributes&fields=link&limit=100&offset=0&pattern=load&replay-id=&script-format=formatted HTTP/1.1" 200 119 "-" "KapacitorClient" 2b8ddba7-c2a3-11e7-905c-000000000000 1106
+[httpd] 127.0.0.1 - - [06/Nov/2017:03:32:52 +0000] "DELETE /kapacitor/v1/tasks/load HTTP/1.1" 204 0 "-" "KapacitorClient" 2b8e13a1-c2a3-11e7-905d-000000000000 3313
+
+[httpd] 127.0.0.1 - - [06/Nov/2017:03:32:52 +0000] "GET /kapacitor/v1/tasks/load?dot-view=attributes&replay-id=&script-format=formatted HTTP/1.1" 404 57 "-" "KapacitorClient" 2b8f0c72-c2a3-11e7-905e-000000000000 12116
+[httpd] 127.0.0.1 - - [06/Nov/2017:03:32:52 +0000] "POST /kapacitor/v1/tasks HTTP/1.1" 200 1280 "-" "KapacitorClient" 2b90fa30-c2a3-11e7-905f-000000000000 30341
+[httpd] 127.0.0.1 - - [06/Nov/2017:03:32:52 +0000] "GET /kapacitor/v1/tasks?dot-view=attributes&fields=link&limit=100&offset=0&pattern=load&replay-id=&script-format=formatted HTTP/1.1" 200 119 "-" "KapacitorClient" 2b96521d-c2a3-11e7-9060-000000000000 560
+[task_master:main] 2017/11/06 03:32:52 I! Started task: load
+[edge:load|batch->batch0] 2017/11/06 03:32:52 I! aborting c: 0 e: 0
+[load:query1] 2017/11/06 03:32:52 E! batch run aborted
+[httpd] 172.31.3.11 - - [06/Nov/2017:03:32:57 +0000] "POST /write?consistency=&db=telegraf&precision=ns&rp=autogen HTTP/1.1" 204 0 "-" "InfluxDBClient" 2e74896a-c2a3-11e7-9062-000000000000 554
+[httpd] 172.31.3.11 - - [06/Nov/2017:03:32:57 +0000] "POST /write?consistency=&db=telegraf&precision=ns&rp=autogen HTTP/1.1" 204 0 "-" "InfluxDBClient" 2e74d955-c2a3-11e7-9063-000000000000 513
+[httpd] 172.31.3.11 - - [06/Nov/2017:03:32:57 +0000] "POST /write?consistency=&db=telegraf&precision=ns&rp=autogen HTTP/1.1" 204 0 "-" "InfluxDBClient" 2e74f824-c2a3-11e7-9064-000000000000 480
+[httpd] 172.31.3.11 - - [06/Nov/2017:03:32:57 +0000] "POST /write?consistency=&db=telegraf&precision=ns&rp=autogen HTTP/1.1" 204 0 "-" "InfluxDBClient" 2e751575-c2a3-11e7-9065-000000000000 529
+[httpd] 172.31.3.11 - - [06/Nov/2017:03:32:57 +0000] "POST /write?consistency=&db=telegraf&precision=ns&rp=autogen HTTP/1.1" 204 0 "-" "InfluxDBClient" 2e7533ce-c2a3-11e7-9066-000000000000 491
+[httpd] 172.31.3.11 - - [06/Nov/2017:03:32:57 +0000] "POST /write?consistency=&db=telegraf&precision=ns&rp=autogen HTTP/1.1" 204 0 "-" "InfluxDBClient" 2e754fef-c2a3-11e7-9067-000000000000 499
+[httpd] 172.31.3.11 - - [06/Nov/2017:03:33:00 +0000] "POST /write?consistency=&db=_internal&precision=ns&rp=monitor HTTP/1.1" 204 0 "-" "InfluxDBClient" 3012fd53-c2a3-11e7-9068-000000000000 4321
+[httpd] 172.31.3.11 - - [06/Nov/2017:03:33:00 +0000] "POST /write?consistency=&db=_internal&precision=ns&rp=monitor HTTP/1.1" 204 0 "-" "InfluxDBClient" 301580fc-c2a3-11e7-9069-000000000000 2943
+[httpd] 172.31.3.11 - - [06/Nov/2017:03:33:00 +0000] "POST /write?consistency=&db=_internal&precision=ns&rp=monitor HTTP/1.1" 204 0 "-" "InfluxDBClient" 30164641-c2a3-11e7-906a-000000000000 4005
+
+--------------------------------
+var load_data = batch
+    |query('''
+        SELECT * FROM "telegraf"."autogen"."system"
+    ''')
+        .period(60s)
+        .every(10s)
+        .groupBy('host')
+    |stateCount(lambda: "load5" > 2)
+
+
+load_data
+    |alert()
+
+        .stateChangesOnly(4m)
+
+        .crit(lambda: "state_count" >= 4)
+
+        .critReset(lambda: "state_count" <= 0)
+
+        .message('{{ if eq .Level "OK" }}RECOVERY{{ else }}PROBLEM{{ end }}: LOAD on server {{ index .Fields "ip"}} is {{ .Level }}')
+
+        .details('''
+<p style="font-family:courier;color:white;{{ if eq .Level "CRITICAL" }}background-color:red{{ else if eq .Level "WARNING" }}background-color:orange{{ else if eq .Level "INFO" }}background-color:blue{{ else }}background-color:green{{ end }};text-align:center">Monitoring System Notification</p>
+
+<p style="font-family:courier;">
+
+<b>Server name:</b> {{ index .Tags "host"}}</br>
+
+<b>Server IP:</b> {{ index .Fields "ip" }}</br>
+
+<b>Service:</b> Check system load</br>
+
+<b>Level:</b> {{ if eq .Level "CRITICAL" }}<font color="red">{{ else if eq .Level "WARNING" }}<font color="orange">{{ else if eq .Level "INFO" }}<font color="blue">{{ else }}<font color="green">{{ end }}{{ .Level }}</font></br>
+
+<b>System load:</b> {{ index .Fields "load1" }}   {{ index .Fields "load5" }}   {{ index .Fields "load15" }}</br>
+
+<b>Time:</b> {{ .Time }}</br>
+</p>
+''')
+        .email()
+
+
+
+
